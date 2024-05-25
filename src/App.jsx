@@ -1,14 +1,18 @@
 import React from 'react'
 import { GlobalStyle } from './styles'
+import Header from './components/Header'
+import InputSearcher from './components/SearchInput'
+import Sidebar from './components/SideBar'
+
 
 function App() {
 
   return(
     <>
     <GlobalStyle/>
-    <div>
-      <h1>Testing</h1>
-    </div>
+    <Header/>
+    <InputSearcher />
+    <Sidebar/>
     </>
   )
 

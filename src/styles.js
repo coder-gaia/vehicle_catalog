@@ -1,10 +1,18 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const colors = {
-  smallBackgroundColor: '#001666',
-  bigBackgroundColor: '#ede9e8',
-  mainTextColor: '#000'
+  blue: '#006eff',
+  backgroundColor: '#ede9e8',
+  black: '#000',
+  grey: '#ccc',
+  white: '#fff'
 }
+
+export const MainTitle = styled.h1`
+  font-family: "Major Mono Display", monospace;
+  color: ${colors.black};
+  font-size: 42px;
+`;
 
 export const GlobalStyle = createGlobalStyle`
   *{
@@ -22,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .container {
-    max-width: 1024px;
+    max-width: 1340px;
     width: 100%;
     margin: 0 auto;
   }
