@@ -11,8 +11,8 @@ const Vehicle = () => {
       <InfoContainer>
         <h3>Jeep - Renegade</h3>
         <p>2020 - 31.150km - Grey</p>
-        <p>Cash Price</p>
-        <p>82.999</p>
+        <h4>Cash Price</h4>
+        <h3>82.999</h3>
         <p>City - State</p>
       </InfoContainer>
 

@@ -6,7 +6,9 @@ export const colors = {
   black: '#000',
   grey: '#ccc',
   white: '#fff',
-  lightBlue: '#006eff'
+  lightBlue: '#006eff',
+  green: '#00e63d',
+  red: '#c92f00'
 }
 
 export const MainTitle = styled.h1`

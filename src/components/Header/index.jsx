@@ -8,7 +8,7 @@ const Header = ()=>{
   return(
     <HeaderContainer>
 
-    <MainTitle>Gaia&apos;s Shop</MainTitle>
+    <MainTitle>Gaia Motors</MainTitle>
 
         <div className="nav-links">
 

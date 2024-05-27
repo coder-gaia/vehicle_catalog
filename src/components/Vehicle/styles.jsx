@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from '../../styles'
 
 
 export const CardContainer = styled.div`
@@ -20,5 +21,11 @@ export const InfoContainer = styled.div`
   display:block;
   text-align: center;
   padding: 10px;
+  line-height: 24px;
+
+  h4{
+    color: ${colors.green}
+  }
 `
+
 

@@ -6,6 +6,7 @@ import Sidebar from './components/SideBar'
 import VehicleList from './components/VehicleList'
 import styled from 'styled-components'
 import { SectionTitle } from './components/SideBar/styles'
+import Footer from './components/Footer'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Sidebar/>
       <VehicleList/>
     </Container>
+    <Footer/>
     </>
   )
 

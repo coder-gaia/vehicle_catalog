@@ -30,7 +30,7 @@ export const ActionButton = styled.button`
 `
 
 export const Filter = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 35px;
 
   &.isVisible input {
       display: block;
@@ -52,7 +52,7 @@ export const FilterButton = styled.button`
 export const Input = styled.input`
   display: none;
   width: 100%;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border: 1px solid ${colors.grey};
   margin-top: 5px;
 
@@ -65,6 +65,7 @@ export const SectionTitle = styled.h4`
   font-size: 16px;
   font-weight: 400;
   margin-left:96px;
+  margin-bottom:24px;
 `
 
 export const FiltersWrapper = styled.div`

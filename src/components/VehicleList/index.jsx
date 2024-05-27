@@ -12,6 +12,9 @@ const VehicleList = () => {
       <Vehicle/>
       <Vehicle/>
       <Vehicle/>
+      <Vehicle/>
+      <Vehicle/>
+      <Vehicle/>
     </VehicleListContainer>
   )
 }
