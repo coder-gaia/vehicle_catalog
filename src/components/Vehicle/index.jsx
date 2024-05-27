@@ -1,24 +1,39 @@
 import React from "react";
-import renegade from '../../images/Jeep_Renegade.webp'
-import { CardContainer, Image, InfoContainer } from "./styles";
+import { CardContainer, Image, InfoContainer } from "./styles"
+import PropTypes from 'prop-types'
 
-const Vehicle = () => {
+const Vehicle = (props) => {
+
+  const { brand, model, year, color, price, km, image, location } = props;
+
   return (
     <>
     <CardContainer>
 
-      <Image src={renegade} alt="" />
+      <Image src={image}/>
+
       <InfoContainer>
-        <h3>Jeep - Renegade</h3>
-        <p>2020 - 31.150km - Grey</p>
+        <h3>{`${brand} - ${model}`}</h3>
+        <p>{`${year} - ${km} - ${color}`}</p>
         <h4>Cash Price</h4>
-        <h3>82.999</h3>
-        <p>City - State</p>
+        <h3>{price}</h3>
+        <p>{location}</p>
       </InfoContainer>
 
     </CardContainer>
     </>
-  );
+  )
+}
+
+Vehicle.propTypes = {
+  brand: PropTypes.string.isRequired,
+  model: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  km: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired
 };
 
 export default Vehicle
