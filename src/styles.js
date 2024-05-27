@@ -1,11 +1,12 @@
 import styled, { createGlobalStyle } from 'styled-components'
 
 export const colors = {
-  blue: '#006eff',
+  blue: '#0056b3',
   backgroundColor: '#ede9e8',
   black: '#000',
   grey: '#ccc',
-  white: '#fff'
+  white: '#fff',
+  lightBlue: '#006eff'
 }
 
 export const MainTitle = styled.h1`
@@ -25,12 +26,12 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: ${colors.bigBackgroundColor};
-    color: ${colors.mainTextColor}
+    background-color: ${colors.backgroundColor};
+    color: ${colors.black}
   }
 
   .container {
-    max-width: 1340px;
+    max-width: 1024px;
     width: 100%;
     margin: 0 auto;
   }

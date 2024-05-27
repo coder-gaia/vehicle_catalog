@@ -8,6 +8,7 @@ export const SearchBarContainer = styled.div`
   height:100px;
   display: flex;
   align-items: center;
+  margin-bottom: 42px;
 
   .input-container {
     display: flex;
@@ -27,10 +28,9 @@ export const SearchBarContainer = styled.div`
 
 
   button {
-    background-color: ${colors.black};
-    color: ${colors.white};
+    background-color: ${colors.white};
+    color: ${colors.black};
     border: none;
-    border-bottom: 2px solid ${colors.backgroundColor};
     font-weight:400;
     padding: 10px 20px;
     border-radius: 8px;
@@ -39,9 +39,7 @@ export const SearchBarContainer = styled.div`
     font-size: 16px;
 
     &:hover{
-      background-color: ${colors.backgroundColor};
-      color: ${colors.blue};
-      transition: .6s all ease;
+      font-weight: bold;
     }
 }
 `
