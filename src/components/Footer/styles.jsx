@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 
   ${MainTitle}{
     color: ${colors.white};
+    margin-top: -10px;
   }
 `
 export const FooterLinks = styled.div`
@@ -92,7 +93,7 @@ export const IconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-top:10px;
-
+  margin-bottom:10px;
 `
 export const Icon = styled.a`
   color: ${colors.white};
@@ -105,6 +106,22 @@ export const Icon = styled.a`
   color: ${colors.grey};
   }
 `
-export const Test = styled.div`
+export const MainWrapper = styled.div`
   background-color: black;
+  padding: 20px 10px;
+`
+export const FantasyName = styled.div`
+  color: ${colors.white};
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  font-size: 16px;
+`
+
+export const Address = styled.div`
+  color: ${colors.white};
+  display:flex;
+  text-align:center;
+  justify-content: center;
+  font-size: 14px;
 `

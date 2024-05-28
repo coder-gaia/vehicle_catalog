@@ -1,6 +1,6 @@
 import React from "react"
 import { MainTitle } from "../../styles"
-import { Wrapper, FooterLinks, SocialLinks, IconLink, Copyright, InfoWrapper, InfoLink, AdditionalInfo, IconWrapper, Icon, Test } from "./styles"
+import { Wrapper, FooterLinks, SocialLinks, IconLink, Copyright, InfoWrapper, InfoLink, AdditionalInfo, IconWrapper, Icon, MainWrapper, FantasyName, Address } from "./styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebook, faInstagram, faYoutube, faAppStore, faGooglePlay, faYelp} from "@fortawesome/free-brands-svg-icons"
 
@@ -8,7 +8,7 @@ const Footer = () => {
 
 
   return(
-    <Test>
+    <MainWrapper>
       <Wrapper>
         <MainTitle>Gaia Motors</MainTitle>
 
@@ -67,8 +67,17 @@ const Footer = () => {
 
       </IconWrapper>
 
+      <FantasyName>
+        <p>GAIA MOTORS TECHNOLOGY AND VEHICLES BUSINESS LTDA.</p>
+      </FantasyName>
+
+      <Address id="contact-address">
+        <p>Registered with CRN under nº 36.740.390/0001-83, with headquarters at Privet Drive, nº 8, Under the Cupboard, Module 1, Belval Garden, Beverly Hills/California, ZIP 07.421- 010</p>
+      </Address>
+
       </AdditionalInfo>
-    </Test>
+
+    </MainWrapper>
   )
 }
 

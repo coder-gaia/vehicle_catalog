@@ -21,8 +21,7 @@ const Header = ()=>{
           </div>
 
           <div className="nav-item">
-            <a href="#">About us</a>
-            <div className="dropdown">Address</div>
+            <a href="#contact-address">Address</a>
           </div>
 
         <div className="login">

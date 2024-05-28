@@ -5,4 +5,5 @@ export const VehicleListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap:20px;
   margin-top:90px;
+  margin-bottom: 36px;
 `;

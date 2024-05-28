@@ -1,122 +1,100 @@
-import React, { useState } from "react"
-import { ButtonContainer, Filter, SidebarContainer, Input, ActionButton, FilterButton, FiltersWrapper } from "./styles"
+import React, { useState } from "react";
+import { ButtonContainer, Filter, SidebarContainer, ActionButton, FilterButton, FiltersWrapper, Tag } from "./styles";
+import vehiclesData from '../../utils/vehicleData';
+import PropTypes from 'prop-types';
 
-const Sidebar = () => {
-
+const Sidebar = ({ onFilterChange }) => {
   const [showSidebar, setShowSidebar] = useState(true);
-  const [openInput, setOpenInput] = useState({
+  const [selectedTags, setSelectedTags] = useState({
+    brand: [],
+    model: [],
+    year: [],
+    color: []
+  });
+
+  const [expandedFilters, setExpandedFilters] = useState({
     brand: false,
     model: false,
     year: false,
     color: false
-  })
-  const [filterValues, setFilterValues] = useState({
-    brand: '',
-    model: '',
-    year: '',
-    color: ''
-  })
+  });
 
-  const toggleFilter = (filter) => {
-    setOpenInput((prev) => ({
-      ...prev,
-      [filter]: !prev[filter]
-    }))
-  }
+  const toggleTag = (category, value) => {
+    const isSelected = selectedTags[category].includes(value);
+    const updatedTags = isSelected ? selectedTags[category].filter((tag) => tag !== value) : [...selectedTags[category], value];
+    const newSelectedTags = { ...selectedTags, [category]: updatedTags };
+    setSelectedTags(newSelectedTags);
+    return newSelectedTags;
+  };
 
   const resetFilters = () => {
-    setOpenInput({
-      brand: false,
-      model: false,
-      year: false,
-      color: false
-    })
-  }
+    const initialTags = {
+      brand: [],
+      model: [],
+      year: [],
+      color: []
+    };
+    setSelectedTags(initialTags);
+    onFilterChange(initialTags);
+  };
 
   const toggleSidebar = () => {
-    setShowSidebar(!showSidebar)
-  }
+    setShowSidebar(!showSidebar);
+  };
 
-  const clearInputs = () => {
-    setFilterValues({
-      brand: '',
-      model: '',
-      year: '',
-      color: ''
-    });
-  }
+  const uniqueTags = (category) => {
+    return [...new Set(vehiclesData.map(vehicle => vehicle[category]))];
+  };
 
-  const handleInputChange = (e) => {
-    const { name, value} = e.target;
-    setFilterValues((prev) => ({
+  const handleTagClick = (category, value) => {
+    const newTags = toggleTag(category, value);
+    onFilterChange(newTags);
+  };
+
+  const toggleFilterSection = (category) => {
+    setExpandedFilters(prev => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [category]: !prev[category]
+    }));
+  };
 
-  return(
-    <>
-      <SidebarContainer>
-
+  return (
+    <SidebarContainer>
       <ButtonContainer>
-        <ActionButton onClick={toggleSidebar}> {showSidebar ? 'Dismiss Filters' : 'Show Filters'}</ActionButton>
-        <ActionButton onClick={() => {
-          resetFilters();
-          clearInputs();
-        }}>Clean Filters</ActionButton>
+        <ActionButton onClick={toggleSidebar}>{showSidebar ? 'Dismiss Filters' : 'Show Filters'}</ActionButton>
+        <ActionButton onClick={resetFilters}>Clean Filters</ActionButton>
       </ButtonContainer>
 
       {showSidebar && (
         <FiltersWrapper>
-
-      <Filter>
-        <FilterButton onClick={() => toggleFilter('brand')}>Brand</FilterButton>
-        < Input
-              type="text"
-              placeholder="Search for brand"
-              className={openInput.brand ? 'isOpen' : ''}
-              name="brand"
-              value={filterValues.brand}
-              onChange={handleInputChange}/>
-      </Filter>
-
-      <Filter>
-        <FilterButton onClick={() => toggleFilter('model')}>Model</FilterButton>
-        <Input
-              type="text"
-              placeholder="Search for model"
-              className={openInput.model ? 'isOpen' : ''}
-              name="model"
-              value={filterValues.model}
-              onChange={handleInputChange}/>
-      </Filter>
-
-      <Filter>
-        <FilterButton onClick={() => toggleFilter('year')}>Year</FilterButton>
-        <Input
-              type="text"
-              placeholder="Search for year"
-              className={openInput.year ? 'isOpen' : ''}
-              name="year"
-              value={filterValues.year}
-              onChange={handleInputChange}/>
-      </Filter>
-
-      <Filter>
-        <FilterButton onClick={() => toggleFilter('color')}>Color</FilterButton>
-        <Input
-              type="text"
-              placeholder="Search for color"
-              className={openInput.color ? 'isOpen' : ''}
-              name="color"
-              value={filterValues.color}
-              onChange={handleInputChange}/>
-      </Filter>
+          {['brand', 'model', 'year', 'color'].map((category) => (
+            <Filter key={category}>
+              <FilterButton onClick={() => toggleFilterSection(category)}>
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </FilterButton>
+              {expandedFilters[category] && (
+                <div>
+                  {uniqueTags(category).map((tag) => (
+                    <Tag
+                      key={tag}
+                      onClick={() => handleTagClick(category, tag)}
+                      selected={selectedTags[category].includes(tag)}
+                    >
+                      {tag}
+                    </Tag>
+                  ))}
+                </div>
+              )}
+            </Filter>
+          ))}
         </FiltersWrapper>
       )}
-      </SidebarContainer>
-    </>
-  )
-}
+    </SidebarContainer>
+  );
+};
 
-export default Sidebar
+Sidebar.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+};
+
+export default Sidebar;

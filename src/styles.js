@@ -27,6 +27,11 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+
   body {
     background-color: ${colors.backgroundColor};
     color: ${colors.black}

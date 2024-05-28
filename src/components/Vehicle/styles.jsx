@@ -9,6 +9,7 @@ export const CardContainer = styled.div`
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 350px;
+  height:350px;
 `
 
 export const Image = styled.img`

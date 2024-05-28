@@ -34,23 +34,6 @@ export const HeaderContainer = styled.div`
     }
 }
 
-  .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: ${colors.black};
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-}
-
-  .nav-item:hover .dropdown {
-    display: flex;
-    border-radius: 8px;
-    cursor:pointer;
-
-}
 
   .login {
     display: flex;

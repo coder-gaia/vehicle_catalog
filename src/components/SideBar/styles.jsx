@@ -49,17 +49,6 @@ export const FilterButton = styled.button`
   cursor: pointer;
 `;
 
-export const Input = styled.input`
-  display: none;
-  width: 100%;
-  padding: 10px 15px;
-  border: 1px solid ${colors.grey};
-  margin-top: 5px;
-
-  &.isOpen{
-    display: block;
-  }
-`
 
 export const SectionTitle = styled.h4`
   font-size: 16px;
@@ -71,4 +60,18 @@ export const SectionTitle = styled.h4`
 export const FiltersWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
+
+export const Tag = styled.button`
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: ${(props) => (props.selected ? 'blue' : 'gray')};
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => (props.selected ? 'darkblue' : 'darkgray')};
+  }
+`

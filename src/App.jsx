@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GlobalStyle } from './styles'
 import Header from './components/Header'
 import InputSearcher from './components/SearchInput'
@@ -11,6 +11,17 @@ import Footer from './components/Footer'
 
 function App() {
 
+  const [filters, setFilters] = useState({
+    brand: [],
+    model: [],
+    year: [],
+    color: []
+  })
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  }
+
   const Container = styled.div`
   display: flex;
 `
@@ -22,8 +33,8 @@ function App() {
     <InputSearcher/>
     <SectionTitle>Semi-used Vehicles</SectionTitle>
     <Container>
-      <Sidebar/>
-      <VehicleList/>
+      <Sidebar onFilterChange={handleFilterChange} />
+      <VehicleList filters={filters}/>
     </Container>
     <Footer/>
     </>

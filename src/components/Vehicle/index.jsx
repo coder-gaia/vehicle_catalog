@@ -28,12 +28,12 @@ const Vehicle = (props) => {
 Vehicle.propTypes = {
   brand: PropTypes.string.isRequired,
   model: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   km: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired
+  location: PropTypes.string
 };
 
 export default Vehicle
