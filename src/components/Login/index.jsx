@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { InputContainer, InputField, InputLabel, LoginContainer, LoginForm, LoginTitle, SubmitButton } from './styles';
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-// import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom'
+import {AuthContext} from '../../AuthContext'
 
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -28,20 +30,22 @@ const Login = () => {
       });
 
       if (response.status === 200) {
+        login()
         setIsLoggedIn(true);
-        alert(`${username} logado com sucesso!`);
+        alert(`${username} logged successffully!`);
+        navigate('/')
       } else {
-        alert('Erro ao fazer login. Por favor, verifique suas credenciais.');
+        alert('Incorrect username or password. Please, check your credentials.');
       }
     } catch (error) {
-      alert('Erro ao fazer login. Por favor, tente novamente mais tarde.');
-      console.error('Erro ao fazer login:', error);
+      alert('Incorrect username or password. Please, check your credentials.');
+      console.error('Failed to sign in:', error);
     }
   }
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    alert(`Deslogado com sucesso!`);
+    alert(`${username} unlogged successffully!`);
   }
 
   return (
@@ -70,8 +74,5 @@ const Login = () => {
   )
 }
 
-// Login.propTypes = {
-//   history: PropTypes.object.isRequired
-// };
 
 export default Login;
