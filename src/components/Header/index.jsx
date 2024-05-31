@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { HeaderContainer } from './styles'
 import { MainTitle } from '../../styles'
 import userIcon from '../../assets/user.svg'
@@ -26,7 +27,7 @@ const Header = ()=>{
 
         <div className="login">
           <img src={userIcon} className='user-icon'/>
-        <a href="#">Login</a>
+        <Link to="/signup">Login</Link>
         </div>
 
       </div>

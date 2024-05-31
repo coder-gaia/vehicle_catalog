@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 import { MainTitle, colors } from '../../styles';
 
+export const MainWrapper = styled.div`
+  background-color: black;
+  padding: 15px 10px;
+  margin-top: 40px;
+`
+
 export const Wrapper = styled.div`
   margin-top: 64px;
+  height:100%;
   display:flex;
   justify-content: space-around;
-  padding: 80px;
+  padding: 60px;
+  margin-top: 40px;
   align-items:center;
   border-bottom: 1px solid ${colors.grey};
   background-color: ${colors.black};
@@ -105,10 +113,6 @@ export const Icon = styled.a`
   &:hover {
   color: ${colors.grey};
   }
-`
-export const MainWrapper = styled.div`
-  background-color: black;
-  padding: 20px 10px;
 `
 export const FantasyName = styled.div`
   color: ${colors.white};
