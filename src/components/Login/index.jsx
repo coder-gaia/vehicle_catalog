@@ -1,24 +1,23 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
 import { InputContainer, InputField, InputLabel, LoginContainer, LoginForm, LoginTitle, SubmitButton } from './styles';
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom'
-import {AuthContext} from '../../AuthContext'
-
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../AuthContext';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { login } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { login, setToken } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
-  }
+  };
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,10 +29,13 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        login()
+        const { token } = response.data;
+        setToken(token);
+        login();
         setIsLoggedIn(true);
-        alert(`${username} logged successffully!`);
-        navigate('/')
+        console.log(token);
+        alert(`${username} logged successfully!`);
+        navigate('/');
       } else {
         alert('Incorrect username or password. Please, check your credentials.');
       }
@@ -41,12 +43,12 @@ const Login = () => {
       alert('Incorrect username or password. Please, check your credentials.');
       console.error('Failed to sign in:', error);
     }
-  }
+  };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    alert(`${username} unlogged successffully!`);
-  }
+    alert(`${username} unlogged successfully!`);
+  };
 
   return (
     <LoginContainer>
@@ -71,8 +73,7 @@ const Login = () => {
         </LoginForm>
       )}
     </LoginContainer>
-  )
-}
-
+  );
+};
 
 export default Login;

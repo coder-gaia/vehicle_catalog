@@ -25,7 +25,7 @@ const Header = ()=>{
           </div>
 
           <div className="nav-item">
-            <a href="#">Sell Vehicle</a>
+            <Link to="creatingVehicle">Create Vehicle</Link>
           </div>
 
           <div className="nav-item">
