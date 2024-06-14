@@ -5,11 +5,27 @@ import vehiclesData from '../../utils/vehicleData';
 import PropTypes from 'prop-types';
 
 const VehicleList = ({ filters }) => {
+  const [vehicles, setVehicles] = useState([]);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
 
   useEffect(() => {
+    const fetchVehicles = async () => {
+      try {
+        const response = await fetch('http://localhost:8082/api/vehicles');
+        const data = await response.json();
+        const combinedVehicles = [...vehiclesData, ...data];
+        setVehicles(combinedVehicles);
+      } catch (error) {
+        console.error('Error fetching vehicles:', error);
+      }
+    };
+
+    fetchVehicles();
+  }, []);
+
+  useEffect(() => {
     const applyFilters = () => {
-      return vehiclesData.filter((vehicle) => {
+      return vehicles.filter((vehicle) => {
         const brandMatch = !filters.brand || filters.brand.length === 0 || filters.brand.includes(vehicle.brand);
         const modelMatch = !filters.model || filters.model.length === 0 || filters.model.includes(vehicle.model);
         const yearMatch = !filters.year || filters.year.length === 0 || filters.year.includes(vehicle.year.toString());
@@ -21,7 +37,7 @@ const VehicleList = ({ filters }) => {
 
     const sortedData = applyFilters().sort((a, b) => b.price - a.price);
     setFilteredVehicles(sortedData);
-  }, [filters]);
+  }, [filters, vehicles]);
 
   return (
     <VehicleListContainer className="container">

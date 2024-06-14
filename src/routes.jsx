@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import UserRegistration from "../src/components/UserRegistration"
 import Login from "../src/components/Login"
 import Home from '../src/Pages/Home'
-import CreateVehicle from "./components/Creation"
+import VehicleRegistration from "./components/VehicleRegistration"
 import PropTypes from 'prop-types'
 
 
@@ -14,7 +14,7 @@ const Rotas = ({ isLoggedIn, handleLogout }) => {
       <Route path="/"  element={<Home isLoggedIn={isLoggedIn} handleLogout={handleLogout} />}/>
       <Route path="/signup" element={<UserRegistration/>}/>
       <Route path="/login" element={<Login/>}/>
-      <Route path="creatingVehicle/" element={<CreateVehicle/>}/>
+      <Route path="createVehicle/" element={<VehicleRegistration/>}/>
   </Routes>
   )
 }

@@ -1,17 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { HeaderContainer } from './styles'
 import { MainTitle } from '../../styles'
 import userIcon from '../../assets/user.svg'
-import {AuthContext} from '../../AuthContext'
 const Header = ()=>{
-
-  const {isLoggedIn, logout} = useContext(AuthContext)
-
-  const handleLogout = () => {
-    logout();
-    alert('Logged out successfully!')
-  };
 
   return(
     <HeaderContainer>
@@ -25,7 +17,7 @@ const Header = ()=>{
           </div>
 
           <div className="nav-item">
-            <Link to="creatingVehicle">Create Vehicle</Link>
+            <Link to="createVehicle">Create Vehicle</Link>
           </div>
 
           <div className="nav-item">
@@ -34,11 +26,7 @@ const Header = ()=>{
 
         <div className="login">
           <img src={userIcon} className='user-icon'/>
-          {isLoggedIn ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <Link to="/signup">Login</Link>
-          )}
+          <Link to="/signup">Login</Link>
         </div>
 
       </div>
