@@ -1,20 +1,26 @@
-import React from 'react'
-import { GlobalStyle } from './styles'
-import Footer from './components/Footer'
-import { BrowserRouter } from 'react-router-dom'
-import Rotas from './routes'
+import React, { useState } from 'react';
+import { GlobalStyle } from './styles';
+import Footer from './components/Footer';
+import { BrowserRouter } from 'react-router-dom';
+import Rotas from './routes';
 
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-function App() {
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    console.log('User logged out. isAuthenticated:', isAuthenticated); 
+  };
 
+  console.log('App rendered. isAuthenticated:', isAuthenticated);
 
-  return(
+  return (
     <BrowserRouter>
-      <GlobalStyle/>
-        <Rotas />
-        <Footer/>
+      <GlobalStyle />
+      <Rotas isAuthenticated={isAuthenticated} handleLogout={handleLogout} setIsAuthenticated={setIsAuthenticated} />
+      <Footer />
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,20 +1,59 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import { InputContainer, InputField, InputLabel, SignUpContainer, SignUpForm, SignUpTitle, SubmitButton, UnderText } from "./styles"
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+  InputContainer,
+  InputField,
+  InputLabel,
+  SignUpContainer,
+  SignUpForm,
+  SignUpTitle,
+  SubmitButton,
+  UnderText,
+} from './styles';
 
 const Registration = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:8081/api/users/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          roles: ['USER'],
+        }),
+      });
+
+      if (response.ok) {
+        navigate('/login');
+        console.error('Erro ao criar usuário');
+      }
+    } catch (error) {
+      console.error('Erro ao criar usuário', error);
+    }
+  };
 
   return (
     <SignUpContainer>
-      <SignUpForm>
+      <SignUpForm onSubmit={handleSubmit}>
         <SignUpTitle>Sign Up</SignUpTitle>
         <InputContainer>
           <InputLabel htmlFor="username">Username</InputLabel>
           <InputField
             type="text"
             id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             required
           />
         </InputContainer>
@@ -23,6 +62,8 @@ const Registration = () => {
           <InputField
             type="email"
             id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </InputContainer>
@@ -31,15 +72,21 @@ const Registration = () => {
           <InputField
             type="password"
             id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </InputContainer>
         <SubmitButton type="submit">Sign Up</SubmitButton>
-        <UnderText>Already have an account? <Link to="/login">Login</Link></UnderText>
-        <UnderText><Link to="/">Home</Link></UnderText>
+        <UnderText>
+          Already have an account? <Link to="/login">Login</Link>
+        </UnderText>
+        <UnderText>
+          <Link to="/">Home</Link>
+        </UnderText>
       </SignUpForm>
     </SignUpContainer>
   );
-}
+};
 
-export default Registration
+export default Registration;
