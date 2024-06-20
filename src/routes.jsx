@@ -7,7 +7,6 @@ import VehicleRegistration from "./components/VehicleRegistration";
 import PropTypes from 'prop-types';
 
 const Rotas = ({ isAuthenticated, handleLogout, setIsAuthenticated }) => {
-  console.log('Rotas component rendered. isAuthenticated:', isAuthenticated); // Adicionar log ao renderizar Rotas
 
   return (
     <Routes>

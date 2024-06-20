@@ -6,7 +6,6 @@ import userIcon from '../../assets/user.svg';
 import PropTypes from 'prop-types';
 
 const Header = ({ isAuthenticated, handleLogout }) => {
-  console.log('Header rendered. isAuthenticated:', isAuthenticated); // Adicionar log ao renderizar Header
 
   return (
     <HeaderContainer>
