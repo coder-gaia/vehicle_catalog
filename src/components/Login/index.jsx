@@ -3,7 +3,7 @@ import { InputContainer, InputField, InputLabel, LoginContainer, LoginForm, Logi
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Login = ({ handleLogout, setIsAuthenticated }) => {
+const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,9 +25,8 @@ const Login = ({ handleLogout, setIsAuthenticated }) => {
 
       if (response.ok) {
         alert("Logged in successfully!");
-        setIsAuthenticated(true); 
+        setIsAuthenticated(true);
         console.log('Login successful. isAuthenticated:', true);
-        handleLogout();
         navigate('/');
       } else {
         console.error('Erro ao fazer login');
@@ -68,7 +67,6 @@ const Login = ({ handleLogout, setIsAuthenticated }) => {
 };
 
 Login.propTypes = {
-  handleLogout: PropTypes.func.isRequired,
   setIsAuthenticated: PropTypes.func.isRequired,
 };
 

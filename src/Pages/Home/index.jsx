@@ -8,6 +8,7 @@ import VehicleList from "../../components/VehicleList";
 import PropTypes from 'prop-types';
 
 const Home = ({ isAuthenticated, handleLogout }) => {
+
   const [filters, setFilters] = useState({
     brand: [],
     model: [],
@@ -40,5 +41,6 @@ Home.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
 };
+
 
 export default Home;

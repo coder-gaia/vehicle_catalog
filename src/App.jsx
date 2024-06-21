@@ -9,10 +9,8 @@ const App = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    console.log('User logged out. isAuthenticated:', isAuthenticated); 
   };
 
-  console.log('App rendered. isAuthenticated:', isAuthenticated);
 
   return (
     <BrowserRouter>
