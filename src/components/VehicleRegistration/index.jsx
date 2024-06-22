@@ -36,7 +36,7 @@ const VehicleRegistration = () => {
         console.log('Vehicle added:', data);
         navigate('/');
       } else {
-        console.error('Error adding vehicle:', response);
+        alert('Error adding vehicle');
       }
     } catch (error) {
       console.error('Error adding vehicle:', error);

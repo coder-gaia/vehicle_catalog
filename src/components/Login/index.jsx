@@ -33,6 +33,7 @@ const Login = ({ setIsAuthenticated }) => {
 
         if (data.token === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnYWlhQWxleGFuZHJlLWlzc3VlciIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSJ9.X5P30sPOfMpRA33YLBh4ZXcs2n2gjwobWrkVg-udrEQ") {
           alert('You are an administrator. You can create vehicles.');
+
           setIsAuthenticated(true);
           navigate('/');
         } else {
@@ -45,10 +46,10 @@ const Login = ({ setIsAuthenticated }) => {
         console.log('Login successful. isAuthenticated:', true);
         navigate('/');
       } else {
-        console.error('Erro ao fazer login');
+        alert('The credentials do not match');
       }
     } catch (error) {
-      console.error('Erro ao fazer login', error);
+      console.error('The credentials do not match', error);
     }
   };
 

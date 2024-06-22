@@ -36,10 +36,9 @@ const Registration = () => {
 
       if (response.ok) {
         navigate('/login');
-        console.error('Erro ao criar usuário');
       }
     } catch (error) {
-      console.error('Erro ao criar usuário', error);
+      alert('Erro ao criar usuário', error);
     }
   };
 
