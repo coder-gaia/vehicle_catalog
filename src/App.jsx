@@ -7,6 +7,7 @@ import Rotas from './routes';
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+
   const handleLogout = () => {
     setIsAuthenticated(false);
   };

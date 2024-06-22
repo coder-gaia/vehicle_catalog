@@ -24,8 +24,24 @@ const Login = ({ setIsAuthenticated }) => {
       });
 
       if (response.ok) {
+
+        const data = await response.json();
+        console.log('Data from API:', data);
+
+        localStorage.setItem('token', data.token);
+
+
+        if (data.token === "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnYWlhQWxleGFuZHJlLWlzc3VlciIsInN1YiI6ImFkbWluQGdtYWlsLmNvbSJ9.X5P30sPOfMpRA33YLBh4ZXcs2n2gjwobWrkVg-udrEQ") {
+          alert('You are an administrator. You can create vehicles.');
+          setIsAuthenticated(true);
+          navigate('/');
+        } else {
+          alert('You do not have permission to create vehicles.');
+        }
+
         alert("Logged in successfully!");
         setIsAuthenticated(true);
+
         console.log('Login successful. isAuthenticated:', true);
         navigate('/');
       } else {
