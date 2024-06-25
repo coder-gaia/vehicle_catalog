@@ -22,6 +22,8 @@ npm install
 
 
 ## IMPORTANTE
-
+O usuário para acessar os privilégios de administrador é:
+email:admin@gmail.com
+senha:admin
 O Frontend não funcionará corretamente se os servidores do backend e do mongoDB não estiverem em execução
 
